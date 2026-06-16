@@ -1,0 +1,1142 @@
+2026-06-16 13:06:19,944 - app.main - INFO - Starting up...
+2026-06-16 13:06:19,951 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:06:19,952 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:06:19,952 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:19,955 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("customers")
+2026-06-16 13:06:19,955 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:19,956 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE customers (
+	id INTEGER NOT NULL, 
+	name VARCHAR(100) NOT NULL, 
+	email VARCHAR(100) NOT NULL, 
+	phone VARCHAR(20) NOT NULL, 
+	address VARCHAR(255) NOT NULL, 
+	is_active BOOLEAN, 
+	created_at DATETIME DEFAULT CURRENT_TIMESTAMP, 
+	updated_at DATETIME, 
+	PRIMARY KEY (id)
+)
+
+
+2026-06-16 13:06:19,957 - sqlalchemy.engine.Engine - INFO - [no key 0.00097s] ()
+2026-06-16 13:06:19,978 - sqlalchemy.engine.Engine - INFO - CREATE UNIQUE INDEX ix_customers_email ON customers (email)
+2026-06-16 13:06:19,979 - sqlalchemy.engine.Engine - INFO - [no key 0.00045s] ()
+2026-06-16 13:06:19,994 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_customers_id ON customers (id)
+2026-06-16 13:06:19,994 - sqlalchemy.engine.Engine - INFO - [no key 0.00042s] ()
+2026-06-16 13:06:20,008 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:06:45,016 - app.main - INFO - Shutting down...
+2026-06-16 13:06:47,732 - app.main - INFO - Starting up...
+2026-06-16 13:06:47,733 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:06:47,733 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:06:47,734 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:47,735 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:06:48,282 - app.main - INFO - Shutting down...
+2026-06-16 13:06:49,645 - app.main - INFO - Starting up...
+2026-06-16 13:06:49,647 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:06:49,647 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:06:49,648 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:49,649 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:06:49,649 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:49,650 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("products")
+2026-06-16 13:06:49,650 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:49,651 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE products (
+	id INTEGER NOT NULL, 
+	name VARCHAR(200) NOT NULL, 
+	description VARCHAR(1000), 
+	price FLOAT, 
+	stock_quantity INTEGER, 
+	category VARCHAR(100), 
+	is_active BOOLEAN, 
+	created_at DATETIME DEFAULT CURRENT_TIMESTAMP, 
+	updated_at DATETIME, 
+	PRIMARY KEY (id)
+)
+
+
+2026-06-16 13:06:49,652 - sqlalchemy.engine.Engine - INFO - [no key 0.00100s] ()
+2026-06-16 13:06:49,669 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_products_id ON products (id)
+2026-06-16 13:06:49,669 - sqlalchemy.engine.Engine - INFO - [no key 0.00056s] ()
+2026-06-16 13:06:49,687 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:06:50,117 - app.main - INFO - Shutting down...
+2026-06-16 13:06:51,341 - app.main - INFO - Starting up...
+2026-06-16 13:06:51,343 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:06:51,343 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:06:51,343 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:51,344 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:06:51,344 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:51,344 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:06:51,345 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:51,345 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("orders")
+2026-06-16 13:06:51,345 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:51,346 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:06:51,346 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:51,346 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("order_items")
+2026-06-16 13:06:51,346 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:51,347 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:06:51,347 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:51,347 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("shipments")
+2026-06-16 13:06:51,347 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:51,348 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE orders (
+	id INTEGER NOT NULL, 
+	customer_id INTEGER NOT NULL, 
+	total_amount FLOAT NOT NULL, 
+	status VARCHAR(9), 
+	order_date DATETIME DEFAULT CURRENT_TIMESTAMP, 
+	created_at DATETIME DEFAULT CURRENT_TIMESTAMP, 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(customer_id) REFERENCES customers (id)
+)
+
+
+2026-06-16 13:06:51,349 - sqlalchemy.engine.Engine - INFO - [no key 0.00083s] ()
+2026-06-16 13:06:51,363 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_orders_id ON orders (id)
+2026-06-16 13:06:51,363 - sqlalchemy.engine.Engine - INFO - [no key 0.00037s] ()
+2026-06-16 13:06:51,376 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE order_items (
+	id INTEGER NOT NULL, 
+	order_id INTEGER NOT NULL, 
+	product_id INTEGER NOT NULL, 
+	quantity INTEGER NOT NULL, 
+	price FLOAT NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(order_id) REFERENCES orders (id), 
+	FOREIGN KEY(product_id) REFERENCES products (id)
+)
+
+
+2026-06-16 13:06:51,377 - sqlalchemy.engine.Engine - INFO - [no key 0.00096s] ()
+2026-06-16 13:06:51,389 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_order_items_id ON order_items (id)
+2026-06-16 13:06:51,390 - sqlalchemy.engine.Engine - INFO - [no key 0.00043s] ()
+2026-06-16 13:06:51,403 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE shipments (
+	id INTEGER NOT NULL, 
+	order_id INTEGER NOT NULL, 
+	tracking_number VARCHAR(100) NOT NULL, 
+	status VARCHAR(9), 
+	shipped_date DATETIME, 
+	delivered_date DATETIME, 
+	created_at DATETIME DEFAULT CURRENT_TIMESTAMP, 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	UNIQUE (order_id), 
+	FOREIGN KEY(order_id) REFERENCES orders (id), 
+	UNIQUE (tracking_number)
+)
+
+
+2026-06-16 13:06:51,404 - sqlalchemy.engine.Engine - INFO - [no key 0.00103s] ()
+2026-06-16 13:06:51,419 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_shipments_id ON shipments (id)
+2026-06-16 13:06:51,419 - sqlalchemy.engine.Engine - INFO - [no key 0.00042s] ()
+2026-06-16 13:06:51,431 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:06:52,722 - app.main - INFO - Shutting down...
+2026-06-16 13:06:53,955 - app.main - INFO - Starting up...
+2026-06-16 13:06:53,956 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:06:53,956 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:06:53,956 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:53,957 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:06:53,958 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:53,958 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:06:53,958 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:53,959 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:06:53,959 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:53,959 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:06:53,959 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:53,960 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:06:58,188 - app.main - INFO - Shutting down...
+2026-06-16 13:06:59,456 - app.main - INFO - Starting up...
+2026-06-16 13:06:59,457 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:06:59,458 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:06:59,458 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:59,459 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:06:59,459 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:59,459 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:06:59,459 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:59,460 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:06:59,460 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:59,460 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:06:59,461 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:06:59,461 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:06:59,894 - app.main - INFO - Shutting down...
+2026-06-16 13:07:01,144 - app.main - INFO - Starting up...
+2026-06-16 13:07:01,145 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:07:01,145 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:07:01,145 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:07:01,146 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:07:01,146 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:07:01,146 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:07:01,147 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:07:01,147 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:07:01,147 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:07:01,147 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:07:01,148 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:07:01,148 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:07:20,977 - app.main - INFO - Shutting down...
+2026-06-16 13:07:35,657 - app.main - INFO - Starting up...
+2026-06-16 13:07:35,657 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:07:35,658 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:07:35,658 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:07:35,659 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:07:35,659 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:07:35,659 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:07:35,659 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:07:35,660 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:07:35,660 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:07:35,660 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:07:35,661 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:07:35,661 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:07:56,353 - app.main - INFO - Shutting down...
+2026-06-16 13:08:06,703 - app.main - INFO - Starting up...
+2026-06-16 13:08:06,704 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:08:06,704 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:08:06,704 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:08:06,705 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:08:06,705 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:08:06,706 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:08:06,706 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:08:06,706 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:08:06,706 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:08:06,707 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:08:06,707 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:08:06,707 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:08:40,530 - app.main - INFO - Shutting down...
+2026-06-16 13:08:42,208 - app.main - INFO - Starting up...
+2026-06-16 13:08:42,209 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:08:42,209 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:08:42,209 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:08:42,210 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:08:42,210 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:08:42,211 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:08:42,211 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:08:42,211 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:08:42,212 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:08:42,212 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:08:42,212 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:08:42,213 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:09:27,275 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:09:27,278 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE customers.email = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:09:27,278 - sqlalchemy.engine.Engine - INFO - [generated in 0.00083s] ('vijay@gmail.com', 1, 0)
+2026-06-16 13:09:27,281 - sqlalchemy.engine.Engine - INFO - INSERT INTO customers (name, email, phone, address, is_active, updated_at) VALUES (?, ?, ?, ?, ?, ?) RETURNING id, created_at
+2026-06-16 13:09:27,281 - sqlalchemy.engine.Engine - INFO - [generated in 0.00047s] ('vijay', 'vijay@gmail.com', '9874561230', 'Chennai', 1, None)
+2026-06-16 13:09:27,285 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:09:27,300 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:09:27,303 - sqlalchemy.engine.Engine - INFO - SELECT customers.id, customers.name, customers.email, customers.phone, customers.address, customers.is_active, customers.created_at, customers.updated_at 
+FROM customers 
+WHERE customers.id = ?
+2026-06-16 13:09:27,303 - sqlalchemy.engine.Engine - INFO - [generated in 0.00075s] (1,)
+2026-06-16 13:09:27,364 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:09:50,842 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:09:50,843 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE customers.email = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:09:50,843 - sqlalchemy.engine.Engine - INFO - [cached since 23.57s ago] ('vijay@gmail.com', 1, 0)
+2026-06-16 13:09:50,845 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:11:04,125 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:11:04,125 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE customers.email = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:11:04,126 - sqlalchemy.engine.Engine - INFO - [cached since 96.85s ago] ('ram@gmail.com', 1, 0)
+2026-06-16 13:11:04,128 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:12:52,695 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:12:52,695 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE customers.email = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:12:52,696 - sqlalchemy.engine.Engine - INFO - [cached since 205.4s ago] ('ram@gmail.com', 1, 0)
+2026-06-16 13:12:52,698 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:13:09,236 - app.main - INFO - Shutting down...
+2026-06-16 13:13:10,766 - app.main - INFO - Starting up...
+2026-06-16 13:13:10,767 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:13:10,768 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:13:10,768 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:13:10,769 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:13:10,769 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:13:10,769 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:13:10,770 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:13:10,770 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:13:10,770 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:13:10,771 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:13:10,771 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:13:10,772 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:14:40,009 - app.main - INFO - Shutting down...
+2026-06-16 13:15:30,295 - app.main - INFO - Starting up...
+2026-06-16 13:15:30,296 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:15:30,296 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:15:30,296 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:15:30,297 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:15:30,297 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:15:30,298 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:15:30,298 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:15:30,298 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:15:30,299 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:15:30,299 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:15:30,299 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:15:30,300 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:15:37,174 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:15:37,177 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE customers.email = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:15:37,178 - sqlalchemy.engine.Engine - INFO - [generated in 0.00076s] ('ram@gmail.com', 1, 0)
+2026-06-16 13:15:37,271 - sqlalchemy.engine.Engine - INFO - INSERT INTO customers (name, email, phone, address, is_active, updated_at) VALUES (?, ?, ?, ?, ?, ?) RETURNING id, created_at
+2026-06-16 13:15:37,271 - sqlalchemy.engine.Engine - INFO - [generated in 0.00079s] ('Ram', 'ram@gmail.com', '6381244569', 'chennai4564144511', 1, None)
+2026-06-16 13:15:37,273 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:15:37,288 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:15:37,290 - sqlalchemy.engine.Engine - INFO - SELECT customers.id, customers.name, customers.email, customers.phone, customers.address, customers.is_active, customers.created_at, customers.updated_at 
+FROM customers 
+WHERE customers.id = ?
+2026-06-16 13:15:37,291 - sqlalchemy.engine.Engine - INFO - [generated in 0.00102s] (2,)
+2026-06-16 13:15:37,298 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:15:53,053 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:15:53,054 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE customers.email = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:15:53,055 - sqlalchemy.engine.Engine - INFO - [cached since 15.88s ago] ('ram@gmail.com', 1, 0)
+2026-06-16 13:15:53,056 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:16:10,004 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:16:10,008 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE lower(customers.name) LIKE lower(?) OR lower(customers.email) LIKE lower(?)) AS anon_1
+2026-06-16 13:16:10,009 - sqlalchemy.engine.Engine - INFO - [generated in 0.00096s] ('%1%', '%1%')
+2026-06-16 13:16:10,012 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE lower(customers.name) LIKE lower(?) OR lower(customers.email) LIKE lower(?)
+ LIMIT ? OFFSET ?
+2026-06-16 13:16:10,014 - sqlalchemy.engine.Engine - INFO - [generated in 0.00129s] ('%1%', '%1%', 100, 0)
+2026-06-16 13:16:10,018 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:16:22,074 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:16:22,075 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE customers.id = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:16:22,076 - sqlalchemy.engine.Engine - INFO - [generated in 0.00090s] (1, 1, 0)
+2026-06-16 13:16:22,078 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:16:33,951 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:16:33,951 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE customers.email = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:16:33,952 - sqlalchemy.engine.Engine - INFO - [cached since 56.78s ago] ('cd@gmail.com', 1, 0)
+2026-06-16 13:16:34,045 - sqlalchemy.engine.Engine - INFO - INSERT INTO customers (name, email, phone, address, is_active, updated_at) VALUES (?, ?, ?, ?, ?, ?) RETURNING id, created_at
+2026-06-16 13:16:34,045 - sqlalchemy.engine.Engine - INFO - [cached since 56.77s ago] ('Ram', 'cd@gmail.com', '6381244569', 'chennai4564144511', 1, None)
+2026-06-16 13:16:34,046 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:16:34,059 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:16:34,060 - sqlalchemy.engine.Engine - INFO - SELECT customers.id, customers.name, customers.email, customers.phone, customers.address, customers.is_active, customers.created_at, customers.updated_at 
+FROM customers 
+WHERE customers.id = ?
+2026-06-16 13:16:34,060 - sqlalchemy.engine.Engine - INFO - [cached since 56.77s ago] (3,)
+2026-06-16 13:16:34,061 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:17:33,203 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:17:33,203 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE customers.email = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:17:33,204 - sqlalchemy.engine.Engine - INFO - [cached since 116s ago] ('cd@gmail.com', 1, 0)
+2026-06-16 13:17:33,205 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:20:02,413 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:20:02,415 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers) AS anon_1
+2026-06-16 13:20:02,416 - sqlalchemy.engine.Engine - INFO - [generated in 0.00060s] ()
+2026-06-16 13:20:02,417 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-06-16 13:20:02,418 - sqlalchemy.engine.Engine - INFO - [generated in 0.00062s] (100, 0)
+2026-06-16 13:20:02,423 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:22:30,978 - app.main - INFO - Shutting down...
+2026-06-16 13:22:48,295 - app.main - INFO - Starting up...
+2026-06-16 13:22:48,297 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:22:48,298 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:22:48,299 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:22:48,301 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:22:48,301 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:22:48,302 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:22:48,302 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:22:48,303 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:22:48,303 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:22:48,304 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:22:48,304 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:22:48,305 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:23:05,722 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:23:05,731 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers) AS anon_1
+2026-06-16 13:23:05,732 - sqlalchemy.engine.Engine - INFO - [generated in 0.00137s] ()
+2026-06-16 13:23:05,736 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-06-16 13:23:05,738 - sqlalchemy.engine.Engine - INFO - [generated in 0.00132s] (100, 0)
+2026-06-16 13:23:05,741 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:26:48,709 - app.main - INFO - Shutting down...
+2026-06-16 13:29:44,154 - app.main - INFO - Starting up...
+2026-06-16 13:29:44,157 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:29:44,158 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:29:44,158 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:29:44,160 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:29:44,160 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:29:44,161 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:29:44,161 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:29:44,162 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:29:44,162 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:29:44,163 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:29:44,164 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:29:44,166 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:29:49,876 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:29:49,884 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers) AS anon_1
+2026-06-16 13:29:49,885 - sqlalchemy.engine.Engine - INFO - [generated in 0.00122s] ()
+2026-06-16 13:29:49,888 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-06-16 13:29:49,890 - sqlalchemy.engine.Engine - INFO - [generated in 0.00123s] (100, 0)
+2026-06-16 13:29:49,897 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:29:53,073 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:29:53,073 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers) AS anon_1
+2026-06-16 13:29:53,074 - sqlalchemy.engine.Engine - INFO - [cached since 3.19s ago] ()
+2026-06-16 13:29:53,075 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-06-16 13:29:53,076 - sqlalchemy.engine.Engine - INFO - [cached since 3.188s ago] (100, 0)
+2026-06-16 13:29:53,077 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:29:53,903 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:29:53,904 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers) AS anon_1
+2026-06-16 13:29:53,905 - sqlalchemy.engine.Engine - INFO - [cached since 4.021s ago] ()
+2026-06-16 13:29:53,906 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-06-16 13:29:53,907 - sqlalchemy.engine.Engine - INFO - [cached since 4.019s ago] (100, 0)
+2026-06-16 13:29:53,909 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:29:56,874 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:29:56,879 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE lower(customers.name) LIKE lower(?) OR lower(customers.email) LIKE lower(?)) AS anon_1
+2026-06-16 13:29:56,884 - sqlalchemy.engine.Engine - INFO - [generated in 0.00516s] ('%1%', '%1%')
+2026-06-16 13:29:56,890 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE lower(customers.name) LIKE lower(?) OR lower(customers.email) LIKE lower(?)
+ LIMIT ? OFFSET ?
+2026-06-16 13:29:56,892 - sqlalchemy.engine.Engine - INFO - [generated in 0.00191s] ('%1%', '%1%', 100, 0)
+2026-06-16 13:29:56,895 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:30:59,372 - app.main - INFO - Shutting down...
+2026-06-16 13:31:30,279 - app.main - INFO - Starting up...
+2026-06-16 13:31:30,282 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:31:30,283 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:31:30,283 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:31:30,286 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:31:30,286 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:31:30,287 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:31:30,287 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:31:30,287 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:31:30,288 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:31:30,288 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:31:30,289 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:31:30,290 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:31:45,614 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:31:45,623 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers) AS anon_1
+2026-06-16 13:31:45,624 - sqlalchemy.engine.Engine - INFO - [generated in 0.00125s] ()
+2026-06-16 13:31:45,627 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-06-16 13:31:45,628 - sqlalchemy.engine.Engine - INFO - [generated in 0.00100s] (100, 0)
+2026-06-16 13:31:45,632 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:34:21,886 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:34:21,889 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers) AS anon_1
+2026-06-16 13:34:21,890 - sqlalchemy.engine.Engine - INFO - [cached since 156.3s ago] ()
+2026-06-16 13:34:28,402 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-06-16 13:34:28,404 - sqlalchemy.engine.Engine - INFO - [cached since 162.8s ago] (100, 0)
+2026-06-16 13:34:58,980 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:34:59,086 - app.main - INFO - Shutting down...
+2026-06-16 13:35:03,191 - app.main - INFO - Starting up...
+2026-06-16 13:35:03,194 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:35:03,195 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:35:03,196 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:35:03,198 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:35:03,198 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:35:03,199 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:35:03,199 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:35:03,200 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:35:03,200 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:35:03,200 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:35:03,201 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:35:03,202 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:35:18,600 - app.main - INFO - Shutting down...
+2026-06-16 13:35:26,956 - app.main - INFO - Starting up...
+2026-06-16 13:35:26,959 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:35:26,960 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:35:26,960 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:35:26,963 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:35:26,963 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:35:26,963 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:35:26,964 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:35:26,964 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:35:26,965 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:35:26,965 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:35:26,966 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:35:26,968 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:35:32,806 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:35:32,821 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers) AS anon_1
+2026-06-16 13:35:32,823 - sqlalchemy.engine.Engine - INFO - [generated in 0.00232s] ()
+2026-06-16 13:35:33,357 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-06-16 13:35:33,359 - sqlalchemy.engine.Engine - INFO - [generated in 0.00185s] (100, 0)
+2026-06-16 13:36:41,078 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:36:44,209 - app.main - INFO - Shutting down...
+2026-06-16 13:36:53,238 - app.main - INFO - Starting up...
+2026-06-16 13:36:53,240 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:36:53,241 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:36:53,242 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:36:53,244 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:36:53,245 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:36:53,245 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:36:53,246 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:36:53,246 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:36:53,246 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:36:53,247 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:36:53,247 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:36:53,248 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:39:36,407 - app.main - INFO - Shutting down...
+2026-06-16 13:39:40,199 - app.main - INFO - Starting up...
+2026-06-16 13:39:40,201 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:39:40,202 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:39:40,203 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:39:40,205 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:39:40,206 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:39:40,206 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:39:40,207 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:39:40,207 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:39:40,207 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:39:40,208 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:39:40,208 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:39:40,210 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:40:42,688 - app.main - INFO - Shutting down...
+2026-06-16 13:40:46,694 - app.main - INFO - Starting up...
+2026-06-16 13:40:46,696 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:40:46,698 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:40:46,698 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:40:46,700 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:40:46,701 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:40:46,701 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:40:46,701 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:40:46,702 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:40:46,702 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:40:46,703 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:40:46,703 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:40:46,704 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:40:46,814 - app.main - INFO - Shutting down...
+2026-06-16 13:40:54,308 - app.main - INFO - Starting up...
+2026-06-16 13:40:54,310 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:40:54,311 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:40:54,312 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:40:54,314 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:40:54,314 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:40:54,315 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:40:54,315 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:40:54,316 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:40:54,316 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:40:54,316 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:40:54,317 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:40:54,318 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:41:03,356 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:41:03,369 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers) AS anon_1
+2026-06-16 13:41:03,370 - sqlalchemy.engine.Engine - INFO - [generated in 0.00172s] ()
+2026-06-16 13:41:03,375 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-06-16 13:41:03,376 - sqlalchemy.engine.Engine - INFO - [generated in 0.00136s] (100, 0)
+2026-06-16 13:41:09,445 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:43:13,635 - app.main - INFO - Shutting down...
+2026-06-16 13:43:21,539 - app.main - INFO - Starting up...
+2026-06-16 13:43:21,541 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:43:21,542 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:43:21,543 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:21,546 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:43:21,546 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:21,547 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:43:21,547 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:21,548 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:43:21,548 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:21,549 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:43:21,549 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:21,551 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:43:23,944 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:43:23,954 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers) AS anon_1
+2026-06-16 13:43:23,955 - sqlalchemy.engine.Engine - INFO - [generated in 0.00150s] ()
+2026-06-16 13:43:23,958 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-06-16 13:43:23,959 - sqlalchemy.engine.Engine - INFO - [generated in 0.00092s] (100, 0)
+2026-06-16 13:43:23,963 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:43:51,191 - app.main - INFO - Shutting down...
+2026-06-16 13:43:55,414 - app.main - INFO - Starting up...
+2026-06-16 13:43:55,417 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:43:55,418 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:43:55,419 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:55,421 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:43:55,421 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:55,422 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:43:55,422 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:55,423 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:43:55,423 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:55,424 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:43:55,424 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:55,426 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:43:55,533 - app.main - INFO - Shutting down...
+2026-06-16 13:43:59,400 - app.main - INFO - Starting up...
+2026-06-16 13:43:59,403 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:43:59,404 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:43:59,404 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:59,407 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:43:59,407 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:59,408 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:43:59,408 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:59,408 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:43:59,409 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:59,409 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:43:59,409 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:43:59,411 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:43:59,529 - app.main - INFO - Shutting down...
+2026-06-16 13:44:03,441 - app.main - INFO - Starting up...
+2026-06-16 13:44:03,443 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:44:03,444 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:44:03,445 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:03,447 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:44:03,448 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:03,449 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:44:03,449 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:03,450 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:44:03,450 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:03,451 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:44:03,451 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:03,453 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:44:26,537 - app.main - INFO - Shutting down...
+2026-06-16 13:44:30,655 - app.main - INFO - Starting up...
+2026-06-16 13:44:30,657 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:44:30,659 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:44:30,659 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:30,661 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:44:30,661 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:30,662 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:44:30,662 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:30,663 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:44:30,664 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:30,664 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:44:30,665 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:30,666 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:44:35,866 - app.main - INFO - Shutting down...
+2026-06-16 13:44:39,715 - app.main - INFO - Starting up...
+2026-06-16 13:44:39,717 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:44:39,719 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:44:39,719 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:39,722 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:44:39,722 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:39,723 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:44:39,723 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:39,724 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:44:39,724 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:39,725 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:44:39,725 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:44:39,726 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:45:05,262 - app.main - INFO - Starting up...
+2026-06-16 13:45:05,265 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:45:05,266 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:45:05,267 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:45:05,269 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:45:05,269 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:45:05,270 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:45:05,270 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:45:05,271 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:45:05,271 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:45:05,271 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:45:05,272 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:45:05,274 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:45:11,753 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:45:11,766 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers) AS anon_1
+2026-06-16 13:45:11,767 - sqlalchemy.engine.Engine - INFO - [generated in 0.00165s] ()
+2026-06-16 13:45:11,771 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-06-16 13:45:11,772 - sqlalchemy.engine.Engine - INFO - [generated in 0.00113s] (100, 0)
+2026-06-16 13:45:13,858 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:46:27,725 - app.main - INFO - Shutting down...
+2026-06-16 13:46:33,599 - app.main - INFO - Starting up...
+2026-06-16 13:46:33,601 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:46:33,603 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:46:33,604 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:46:33,606 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:46:33,607 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:46:33,607 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:46:33,607 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:46:33,608 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:46:33,608 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:46:33,609 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:46:33,609 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:46:33,611 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:46:40,203 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:46:40,216 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers) AS anon_1
+2026-06-16 13:46:40,217 - sqlalchemy.engine.Engine - INFO - [generated in 0.00153s] ()
+2026-06-16 13:46:40,223 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-06-16 13:46:40,224 - sqlalchemy.engine.Engine - INFO - [generated in 0.00129s] (100, 0)
+2026-06-16 13:46:42,696 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:47:04,063 - app.main - INFO - Shutting down...
+2026-06-16 13:47:18,151 - app.main - INFO - Starting up...
+2026-06-16 13:47:18,153 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:47:18,154 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:47:18,155 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:47:18,158 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:47:18,159 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:47:18,159 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:47:18,159 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:47:18,160 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:47:18,160 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:47:18,161 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:47:18,161 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:47:18,163 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:47:23,700 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:47:23,715 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers) AS anon_1
+2026-06-16 13:47:23,716 - sqlalchemy.engine.Engine - INFO - [generated in 0.00161s] ()
+2026-06-16 13:47:23,721 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-06-16 13:47:23,722 - sqlalchemy.engine.Engine - INFO - [generated in 0.00144s] (100, 0)
+2026-06-16 13:47:25,844 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:47:31,946 - app.main - INFO - Shutting down...
+2026-06-16 13:48:05,418 - app.main - INFO - Starting up...
+2026-06-16 13:48:05,420 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:48:05,421 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:48:05,422 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:48:05,425 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:48:05,425 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:48:05,426 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:48:05,426 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:48:05,427 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:48:05,427 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:48:05,427 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:48:05,428 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:48:05,429 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:48:10,390 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:48:10,397 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE customers.id = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:48:10,398 - sqlalchemy.engine.Engine - INFO - [generated in 0.00159s] (1, 1, 0)
+2026-06-16 13:48:10,410 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:48:24,048 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:48:24,050 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE customers.id = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:48:24,050 - sqlalchemy.engine.Engine - INFO - [cached since 13.65s ago] (2, 1, 0)
+2026-06-16 13:48:24,054 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:49:19,917 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:49:19,922 - sqlalchemy.engine.Engine - INFO - INSERT INTO products (name, description, price, stock_quantity, category, is_active, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at
+2026-06-16 13:49:19,923 - sqlalchemy.engine.Engine - INFO - [generated in 0.00097s] ('Rc Car', 'race car , Drift car', 10000.0, 10, 'car', 1, None)
+2026-06-16 13:49:19,928 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:49:19,944 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:49:19,946 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock_quantity, products.category, products.is_active, products.created_at, products.updated_at 
+FROM products 
+WHERE products.id = ?
+2026-06-16 13:49:19,946 - sqlalchemy.engine.Engine - INFO - [generated in 0.00062s] (1,)
+2026-06-16 13:49:19,949 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:49:31,075 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:49:31,084 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT products.id AS products_id, products.name AS products_name, products.description AS products_description, products.price AS products_price, products.stock_quantity AS products_stock_quantity, products.category AS products_category, products.is_active AS products_is_active, products.created_at AS products_created_at, products.updated_at AS products_updated_at 
+FROM products 
+WHERE products.is_active = 1) AS anon_1
+2026-06-16 13:49:31,088 - sqlalchemy.engine.Engine - INFO - [generated in 0.00373s] ()
+2026-06-16 13:49:31,090 - sqlalchemy.engine.Engine - INFO - SELECT products.id AS products_id, products.name AS products_name, products.description AS products_description, products.price AS products_price, products.stock_quantity AS products_stock_quantity, products.category AS products_category, products.is_active AS products_is_active, products.created_at AS products_created_at, products.updated_at AS products_updated_at 
+FROM products 
+WHERE products.is_active = 1
+ LIMIT ? OFFSET ?
+2026-06-16 13:49:31,091 - sqlalchemy.engine.Engine - INFO - [generated in 0.00130s] (100, 0)
+2026-06-16 13:49:31,093 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:50:04,263 - app.main - INFO - Shutting down...
+2026-06-16 13:50:15,609 - app.main - INFO - Starting up...
+2026-06-16 13:50:15,612 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:50:15,613 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:50:15,613 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:15,615 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:50:15,616 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:15,616 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:50:15,617 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:15,617 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:50:15,617 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:15,618 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:50:15,618 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:15,620 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:50:18,165 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:50:18,176 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT products.id AS products_id, products.name AS products_name, products.description AS products_description, products.price AS products_price, products.stock_quantity AS products_stock_quantity, products.category AS products_category, products.is_active AS products_is_active, products.created_at AS products_created_at, products.updated_at AS products_updated_at 
+FROM products 
+WHERE products.is_active = 1) AS anon_1
+2026-06-16 13:50:18,177 - sqlalchemy.engine.Engine - INFO - [generated in 0.00186s] ()
+2026-06-16 13:50:18,181 - sqlalchemy.engine.Engine - INFO - SELECT products.id AS products_id, products.name AS products_name, products.description AS products_description, products.price AS products_price, products.stock_quantity AS products_stock_quantity, products.category AS products_category, products.is_active AS products_is_active, products.created_at AS products_created_at, products.updated_at AS products_updated_at 
+FROM products 
+WHERE products.is_active = 1
+ LIMIT ? OFFSET ?
+2026-06-16 13:50:18,182 - sqlalchemy.engine.Engine - INFO - [generated in 0.00131s] (100, 0)
+2026-06-16 13:50:18,187 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:50:27,234 - app.main - INFO - Shutting down...
+2026-06-16 13:50:31,603 - app.main - INFO - Starting up...
+2026-06-16 13:50:31,605 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:50:31,606 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:50:31,607 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:31,609 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:50:31,609 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:31,610 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:50:31,610 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:31,610 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:50:31,611 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:31,611 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:50:31,612 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:31,613 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:50:31,722 - app.main - INFO - Shutting down...
+2026-06-16 13:50:35,459 - app.main - INFO - Starting up...
+2026-06-16 13:50:35,461 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:50:35,462 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:50:35,463 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:35,466 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:50:35,466 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:35,467 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:50:35,467 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:35,468 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:50:35,468 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:35,468 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:50:35,469 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:35,470 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:50:49,079 - app.main - INFO - Shutting down...
+2026-06-16 13:50:52,919 - app.main - INFO - Starting up...
+2026-06-16 13:50:52,921 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:50:52,922 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:50:52,923 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:52,925 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:50:52,925 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:52,926 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:50:52,926 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:52,927 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:50:52,927 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:52,927 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:50:52,928 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:50:52,929 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:50:56,235 - app.main - INFO - Shutting down...
+2026-06-16 13:51:00,647 - app.main - INFO - Starting up...
+2026-06-16 13:51:00,650 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:51:00,652 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:51:00,653 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:00,655 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:51:00,655 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:00,656 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:51:00,656 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:00,657 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:51:00,657 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:00,657 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:51:00,658 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:00,659 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:51:00,772 - app.main - INFO - Shutting down...
+2026-06-16 13:51:04,373 - app.main - INFO - Starting up...
+2026-06-16 13:51:04,375 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:51:04,377 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:51:04,377 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:04,379 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:51:04,379 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:04,380 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:51:04,381 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:04,381 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:51:04,381 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:04,382 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:51:04,382 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:04,384 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:51:06,815 - app.main - INFO - Shutting down...
+2026-06-16 13:51:10,847 - app.main - INFO - Starting up...
+2026-06-16 13:51:10,850 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:51:10,851 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:51:10,852 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:10,854 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:51:10,854 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:10,855 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:51:10,855 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:10,856 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:51:10,856 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:10,857 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:51:10,857 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:10,859 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:51:11,293 - app.main - INFO - Shutting down...
+2026-06-16 13:51:15,186 - app.main - INFO - Starting up...
+2026-06-16 13:51:15,188 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:51:15,189 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:51:15,190 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:15,192 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:51:15,192 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:15,193 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:51:15,193 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:15,194 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:51:15,194 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:15,195 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:51:15,195 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:15,196 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:51:15,311 - app.main - INFO - Shutting down...
+2026-06-16 13:51:19,163 - app.main - INFO - Starting up...
+2026-06-16 13:51:19,165 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:51:19,167 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:51:19,167 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:19,169 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:51:19,170 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:19,170 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:51:19,170 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:19,171 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:51:19,171 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:19,172 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:51:19,172 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:19,174 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:51:38,488 - app.main - INFO - Shutting down...
+2026-06-16 13:51:42,437 - app.main - INFO - Starting up...
+2026-06-16 13:51:42,440 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:51:42,441 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:51:42,441 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:42,443 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:51:42,444 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:42,444 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:51:42,445 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:42,445 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:51:42,445 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:42,446 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:51:42,446 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:42,448 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:51:42,561 - app.main - INFO - Shutting down...
+2026-06-16 13:51:46,414 - app.main - INFO - Starting up...
+2026-06-16 13:51:46,417 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:51:46,418 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:51:46,419 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:46,421 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:51:46,421 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:46,421 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:51:46,422 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:46,422 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:51:46,423 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:46,423 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:51:46,423 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:51:46,425 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:51:49,741 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:51:49,752 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT products.id AS products_id, products.name AS products_name, products.description AS products_description, products.price AS products_price, products.stock_quantity AS products_stock_quantity, products.category AS products_category, products.is_active AS products_is_active, products.created_at AS products_created_at, products.updated_at AS products_updated_at 
+FROM products 
+WHERE products.is_active = 1) AS anon_1
+2026-06-16 13:51:49,753 - sqlalchemy.engine.Engine - INFO - [generated in 0.00153s] ()
+2026-06-16 13:51:49,756 - sqlalchemy.engine.Engine - INFO - SELECT products.id AS products_id, products.name AS products_name, products.description AS products_description, products.price AS products_price, products.stock_quantity AS products_stock_quantity, products.category AS products_category, products.is_active AS products_is_active, products.created_at AS products_created_at, products.updated_at AS products_updated_at 
+FROM products 
+WHERE products.is_active = 1
+ LIMIT ? OFFSET ?
+2026-06-16 13:51:49,757 - sqlalchemy.engine.Engine - INFO - [generated in 0.00112s] (100, 0)
+2026-06-16 13:51:49,763 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:52:28,929 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:52:28,932 - sqlalchemy.engine.Engine - INFO - SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone, customers.address AS customers_address, customers.is_active AS customers_is_active, customers.created_at AS customers_created_at, customers.updated_at AS customers_updated_at 
+FROM customers 
+WHERE customers.id = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:52:28,933 - sqlalchemy.engine.Engine - INFO - [generated in 0.00101s] (1, 1, 0)
+2026-06-16 13:52:28,935 - sqlalchemy.engine.Engine - INFO - SELECT products.id AS products_id, products.name AS products_name, products.description AS products_description, products.price AS products_price, products.stock_quantity AS products_stock_quantity, products.category AS products_category, products.is_active AS products_is_active, products.created_at AS products_created_at, products.updated_at AS products_updated_at 
+FROM products 
+WHERE products.id = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:52:28,936 - sqlalchemy.engine.Engine - INFO - [generated in 0.00072s] (1, 1, 0)
+2026-06-16 13:52:28,937 - sqlalchemy.engine.Engine - INFO - SELECT products.id AS products_id, products.name AS products_name, products.description AS products_description, products.price AS products_price, products.stock_quantity AS products_stock_quantity, products.category AS products_category, products.is_active AS products_is_active, products.created_at AS products_created_at, products.updated_at AS products_updated_at 
+FROM products 
+WHERE products.id = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:52:28,938 - sqlalchemy.engine.Engine - INFO - [cached since 0.00265s ago] (1, 1, 0)
+2026-06-16 13:52:28,947 - sqlalchemy.engine.Engine - INFO - INSERT INTO orders (customer_id, total_amount, status, updated_at) VALUES (?, ?, ?, ?) RETURNING id, order_date, created_at
+2026-06-16 13:52:28,947 - sqlalchemy.engine.Engine - INFO - [generated in 0.00105s] (1, 100000.0, 'PENDING', None)
+2026-06-16 13:52:28,951 - sqlalchemy.engine.Engine - INFO - SELECT products.id AS products_id, products.name AS products_name, products.description AS products_description, products.price AS products_price, products.stock_quantity AS products_stock_quantity, products.category AS products_category, products.is_active AS products_is_active, products.created_at AS products_created_at, products.updated_at AS products_updated_at 
+FROM products 
+WHERE products.id = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:52:28,952 - sqlalchemy.engine.Engine - INFO - [cached since 0.0166s ago] (1, 1, 0)
+2026-06-16 13:52:28,957 - sqlalchemy.engine.Engine - INFO - UPDATE products SET stock_quantity=?, updated_at=CURRENT_TIMESTAMP WHERE products.id = ?
+2026-06-16 13:52:28,957 - sqlalchemy.engine.Engine - INFO - [generated in 0.00060s] (9, 1)
+2026-06-16 13:52:28,959 - sqlalchemy.engine.Engine - INFO - INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)
+2026-06-16 13:52:28,960 - sqlalchemy.engine.Engine - INFO - [generated in 0.00049s] (1, 1, 1, 100000.0)
+2026-06-16 13:52:28,961 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:52:28,975 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:52:28,977 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock_quantity, products.category, products.is_active, products.created_at, products.updated_at 
+FROM products 
+WHERE products.id = ?
+2026-06-16 13:52:28,978 - sqlalchemy.engine.Engine - INFO - [generated in 0.00083s] (1,)
+2026-06-16 13:52:28,979 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:52:28,981 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:52:28,983 - sqlalchemy.engine.Engine - INFO - SELECT orders.id, orders.customer_id, orders.total_amount, orders.status, orders.order_date, orders.created_at, orders.updated_at 
+FROM orders 
+WHERE orders.id = ?
+2026-06-16 13:52:28,984 - sqlalchemy.engine.Engine - INFO - [generated in 0.00072s] (1,)
+2026-06-16 13:52:29,002 - sqlalchemy.engine.Engine - INFO - SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_customer_id AS anon_1_orders_customer_id, anon_1.orders_total_amount AS anon_1_orders_total_amount, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_order_date AS anon_1_orders_order_date, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, customers_1.id AS customers_1_id, customers_1.name AS customers_1_name, customers_1.email AS customers_1_email, customers_1.phone AS customers_1_phone, customers_1.address AS customers_1_address, customers_1.is_active AS customers_1_is_active, customers_1.created_at AS customers_1_created_at, customers_1.updated_at AS customers_1_updated_at, products_1.id AS products_1_id, products_1.name AS products_1_name, products_1.description AS products_1_description, products_1.price AS products_1_price, products_1.stock_quantity AS products_1_stock_quantity, products_1.category AS products_1_category, products_1.is_active AS products_1_is_active, products_1.created_at AS products_1_created_at, products_1.updated_at AS products_1_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.product_id AS order_items_1_product_id, order_items_1.quantity AS order_items_1_quantity, order_items_1.price AS order_items_1_price 
+FROM (SELECT orders.id AS orders_id, orders.customer_id AS orders_customer_id, orders.total_amount AS orders_total_amount, orders.status AS orders_status, orders.order_date AS orders_order_date, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN customers AS customers_1 ON customers_1.id = anon_1.orders_customer_id LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN products AS products_1 ON products_1.id = order_items_1.product_id
+2026-06-16 13:52:29,004 - sqlalchemy.engine.Engine - INFO - [generated in 0.00204s] (1, 1, 0)
+2026-06-16 13:52:29,018 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:52:57,373 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:52:57,377 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT orders.id AS orders_id, orders.customer_id AS orders_customer_id, orders.total_amount AS orders_total_amount, orders.status AS orders_status, orders.order_date AS orders_order_date, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders) AS anon_1
+2026-06-16 13:52:57,377 - sqlalchemy.engine.Engine - INFO - [generated in 0.00102s] ()
+2026-06-16 13:52:57,394 - sqlalchemy.engine.Engine - INFO - SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_customer_id AS anon_1_orders_customer_id, anon_1.orders_total_amount AS anon_1_orders_total_amount, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_order_date AS anon_1_orders_order_date, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, customers_1.id AS customers_1_id, customers_1.name AS customers_1_name, customers_1.email AS customers_1_email, customers_1.phone AS customers_1_phone, customers_1.address AS customers_1_address, customers_1.is_active AS customers_1_is_active, customers_1.created_at AS customers_1_created_at, customers_1.updated_at AS customers_1_updated_at, products_1.id AS products_1_id, products_1.name AS products_1_name, products_1.description AS products_1_description, products_1.price AS products_1_price, products_1.stock_quantity AS products_1_stock_quantity, products_1.category AS products_1_category, products_1.is_active AS products_1_is_active, products_1.created_at AS products_1_created_at, products_1.updated_at AS products_1_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.product_id AS order_items_1_product_id, order_items_1.quantity AS order_items_1_quantity, order_items_1.price AS order_items_1_price 
+FROM (SELECT orders.id AS orders_id, orders.customer_id AS orders_customer_id, orders.total_amount AS orders_total_amount, orders.status AS orders_status, orders.order_date AS orders_order_date, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders ORDER BY orders.order_date DESC
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN customers AS customers_1 ON customers_1.id = anon_1.orders_customer_id LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN products AS products_1 ON products_1.id = order_items_1.product_id ORDER BY anon_1.orders_order_date DESC
+2026-06-16 13:52:57,396 - sqlalchemy.engine.Engine - INFO - [generated in 0.00202s] (100, 0)
+2026-06-16 13:52:57,402 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:54:03,390 - app.main - INFO - Shutting down...
+2026-06-16 13:54:07,558 - app.main - INFO - Starting up...
+2026-06-16 13:54:07,560 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:54:07,562 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:54:07,562 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:54:07,565 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:54:07,565 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:54:07,566 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:54:07,566 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:54:07,567 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:54:07,567 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:54:07,568 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:54:07,568 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:54:07,569 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:54:36,222 - app.main - INFO - Shutting down...
+2026-06-16 13:54:53,004 - app.main - INFO - Starting up...
+2026-06-16 13:54:53,006 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:54:53,008 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:54:53,008 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:54:53,010 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:54:53,011 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:54:53,011 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:54:53,012 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:54:53,012 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:54:53,013 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:54:53,013 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:54:53,013 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:54:53,015 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:54:53,395 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:54:53,405 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT orders.id AS orders_id, orders.customer_id AS orders_customer_id, orders.total_amount AS orders_total_amount, orders.status AS orders_status, orders.order_date AS orders_order_date, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders) AS anon_1
+2026-06-16 13:54:53,406 - sqlalchemy.engine.Engine - INFO - [generated in 0.00123s] ()
+2026-06-16 13:54:53,427 - sqlalchemy.engine.Engine - INFO - SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_customer_id AS anon_1_orders_customer_id, anon_1.orders_total_amount AS anon_1_orders_total_amount, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_order_date AS anon_1_orders_order_date, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, customers_1.id AS customers_1_id, customers_1.name AS customers_1_name, customers_1.email AS customers_1_email, customers_1.phone AS customers_1_phone, customers_1.address AS customers_1_address, customers_1.is_active AS customers_1_is_active, customers_1.created_at AS customers_1_created_at, customers_1.updated_at AS customers_1_updated_at, products_1.id AS products_1_id, products_1.name AS products_1_name, products_1.description AS products_1_description, products_1.price AS products_1_price, products_1.stock_quantity AS products_1_stock_quantity, products_1.category AS products_1_category, products_1.is_active AS products_1_is_active, products_1.created_at AS products_1_created_at, products_1.updated_at AS products_1_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.product_id AS order_items_1_product_id, order_items_1.quantity AS order_items_1_quantity, order_items_1.price AS order_items_1_price 
+FROM (SELECT orders.id AS orders_id, orders.customer_id AS orders_customer_id, orders.total_amount AS orders_total_amount, orders.status AS orders_status, orders.order_date AS orders_order_date, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders ORDER BY orders.order_date DESC
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN customers AS customers_1 ON customers_1.id = anon_1.orders_customer_id LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN products AS products_1 ON products_1.id = order_items_1.product_id ORDER BY anon_1.orders_order_date DESC
+2026-06-16 13:54:53,430 - sqlalchemy.engine.Engine - INFO - [generated in 0.00253s] (100, 0)
+2026-06-16 13:54:53,444 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:55:11,285 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:55:11,299 - sqlalchemy.engine.Engine - INFO - SELECT anon_1.orders_id AS anon_1_orders_id, anon_1.orders_customer_id AS anon_1_orders_customer_id, anon_1.orders_total_amount AS anon_1_orders_total_amount, anon_1.orders_status AS anon_1_orders_status, anon_1.orders_order_date AS anon_1_orders_order_date, anon_1.orders_created_at AS anon_1_orders_created_at, anon_1.orders_updated_at AS anon_1_orders_updated_at, customers_1.id AS customers_1_id, customers_1.name AS customers_1_name, customers_1.email AS customers_1_email, customers_1.phone AS customers_1_phone, customers_1.address AS customers_1_address, customers_1.is_active AS customers_1_is_active, customers_1.created_at AS customers_1_created_at, customers_1.updated_at AS customers_1_updated_at, products_1.id AS products_1_id, products_1.name AS products_1_name, products_1.description AS products_1_description, products_1.price AS products_1_price, products_1.stock_quantity AS products_1_stock_quantity, products_1.category AS products_1_category, products_1.is_active AS products_1_is_active, products_1.created_at AS products_1_created_at, products_1.updated_at AS products_1_updated_at, order_items_1.id AS order_items_1_id, order_items_1.order_id AS order_items_1_order_id, order_items_1.product_id AS order_items_1_product_id, order_items_1.quantity AS order_items_1_quantity, order_items_1.price AS order_items_1_price 
+FROM (SELECT orders.id AS orders_id, orders.customer_id AS orders_customer_id, orders.total_amount AS orders_total_amount, orders.status AS orders_status, orders.order_date AS orders_order_date, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN customers AS customers_1 ON customers_1.id = anon_1.orders_customer_id LEFT OUTER JOIN order_items AS order_items_1 ON anon_1.orders_id = order_items_1.order_id LEFT OUTER JOIN products AS products_1 ON products_1.id = order_items_1.product_id
+2026-06-16 13:55:11,301 - sqlalchemy.engine.Engine - INFO - [generated in 0.00214s] (1, 1, 0)
+2026-06-16 13:55:11,308 - sqlalchemy.engine.Engine - INFO - SELECT shipments.id AS shipments_id, shipments.order_id AS shipments_order_id, shipments.tracking_number AS shipments_tracking_number, shipments.status AS shipments_status, shipments.shipped_date AS shipments_shipped_date, shipments.delivered_date AS shipments_delivered_date, shipments.created_at AS shipments_created_at, shipments.updated_at AS shipments_updated_at 
+FROM shipments 
+WHERE shipments.order_id = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:55:11,309 - sqlalchemy.engine.Engine - INFO - [generated in 0.00096s] (1, 1, 0)
+2026-06-16 13:55:11,310 - sqlalchemy.engine.Engine - INFO - SELECT shipments.id AS shipments_id, shipments.order_id AS shipments_order_id, shipments.tracking_number AS shipments_tracking_number, shipments.status AS shipments_status, shipments.shipped_date AS shipments_shipped_date, shipments.delivered_date AS shipments_delivered_date, shipments.created_at AS shipments_created_at, shipments.updated_at AS shipments_updated_at 
+FROM shipments 
+WHERE shipments.tracking_number = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:55:11,311 - sqlalchemy.engine.Engine - INFO - [generated in 0.00075s] ('1000122', 1, 0)
+2026-06-16 13:55:11,319 - sqlalchemy.engine.Engine - INFO - UPDATE orders SET status=?, updated_at=CURRENT_TIMESTAMP WHERE orders.id = ?
+2026-06-16 13:55:11,320 - sqlalchemy.engine.Engine - INFO - [generated in 0.00081s] ('SHIPPED', 1)
+2026-06-16 13:55:11,326 - sqlalchemy.engine.Engine - INFO - INSERT INTO shipments (order_id, tracking_number, status, shipped_date, delivered_date, updated_at) VALUES (?, ?, ?, ?, ?, ?) RETURNING id, created_at
+2026-06-16 13:55:11,327 - sqlalchemy.engine.Engine - INFO - [generated in 0.00082s] (1, '1000122', 'PENDING', None, None, None)
+2026-06-16 13:55:11,329 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:55:11,344 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:55:11,345 - sqlalchemy.engine.Engine - INFO - SELECT shipments.id, shipments.order_id, shipments.tracking_number, shipments.status, shipments.shipped_date, shipments.delivered_date, shipments.created_at, shipments.updated_at 
+FROM shipments 
+WHERE shipments.id = ?
+2026-06-16 13:55:11,346 - sqlalchemy.engine.Engine - INFO - [generated in 0.00058s] (1,)
+2026-06-16 13:55:11,350 - sqlalchemy.engine.Engine - INFO - SELECT shipments.id AS shipments_id, shipments.order_id AS shipments_order_id, shipments.tracking_number AS shipments_tracking_number, shipments.status AS shipments_status, shipments.shipped_date AS shipments_shipped_date, shipments.delivered_date AS shipments_delivered_date, shipments.created_at AS shipments_created_at, shipments.updated_at AS shipments_updated_at, orders_1.id AS orders_1_id, orders_1.customer_id AS orders_1_customer_id, orders_1.total_amount AS orders_1_total_amount, orders_1.status AS orders_1_status, orders_1.order_date AS orders_1_order_date, orders_1.created_at AS orders_1_created_at, orders_1.updated_at AS orders_1_updated_at 
+FROM shipments LEFT OUTER JOIN orders AS orders_1 ON orders_1.id = shipments.order_id 
+WHERE shipments.id = ?
+ LIMIT ? OFFSET ?
+2026-06-16 13:55:11,351 - sqlalchemy.engine.Engine - INFO - [generated in 0.00097s] (1, 1, 0)
+2026-06-16 13:55:11,355 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:55:20,025 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:55:20,030 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT shipments.id AS shipments_id, shipments.order_id AS shipments_order_id, shipments.tracking_number AS shipments_tracking_number, shipments.status AS shipments_status, shipments.shipped_date AS shipments_shipped_date, shipments.delivered_date AS shipments_delivered_date, shipments.created_at AS shipments_created_at, shipments.updated_at AS shipments_updated_at 
+FROM shipments) AS anon_1
+2026-06-16 13:55:20,031 - sqlalchemy.engine.Engine - INFO - [generated in 0.00097s] ()
+2026-06-16 13:55:20,035 - sqlalchemy.engine.Engine - INFO - SELECT shipments.id AS shipments_id, shipments.order_id AS shipments_order_id, shipments.tracking_number AS shipments_tracking_number, shipments.status AS shipments_status, shipments.shipped_date AS shipments_shipped_date, shipments.delivered_date AS shipments_delivered_date, shipments.created_at AS shipments_created_at, shipments.updated_at AS shipments_updated_at, orders_1.id AS orders_1_id, orders_1.customer_id AS orders_1_customer_id, orders_1.total_amount AS orders_1_total_amount, orders_1.status AS orders_1_status, orders_1.order_date AS orders_1_order_date, orders_1.created_at AS orders_1_created_at, orders_1.updated_at AS orders_1_updated_at 
+FROM shipments LEFT OUTER JOIN orders AS orders_1 ON orders_1.id = shipments.order_id ORDER BY shipments.created_at DESC
+ LIMIT ? OFFSET ?
+2026-06-16 13:55:20,036 - sqlalchemy.engine.Engine - INFO - [generated in 0.00130s] (100, 0)
+2026-06-16 13:55:20,039 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-06-16 13:55:41,846 - app.main - INFO - Shutting down...
+2026-06-16 13:55:45,826 - app.main - INFO - Starting up...
+2026-06-16 13:55:45,829 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:55:45,830 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:55:45,830 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:55:45,832 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:55:45,833 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:55:45,833 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:55:45,833 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:55:45,834 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:55:45,834 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:55:45,835 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:55:45,835 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:55:45,837 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:55:45,949 - app.main - INFO - Shutting down...
+2026-06-16 13:55:49,891 - app.main - INFO - Starting up...
+2026-06-16 13:55:49,894 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:55:49,895 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("customers")
+2026-06-16 13:55:49,895 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:55:49,898 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("products")
+2026-06-16 13:55:49,898 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:55:49,899 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("orders")
+2026-06-16 13:55:49,899 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:55:49,900 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("order_items")
+2026-06-16 13:55:49,900 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:55:49,901 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("shipments")
+2026-06-16 13:55:49,901 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-06-16 13:55:49,903 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-06-16 13:55:50,058 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-06-16 13:55:50,072 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT shipments.id AS shipments_id, shipments.order_id AS shipments_order_id, shipments.tracking_number AS shipments_tracking_number, shipments.status AS shipments_status, shipments.shipped_date AS shipments_shipped_date, shipments.delivered_date AS shipments_delivered_date, shipments.created_at AS shipments_created_at, shipments.updated_at AS shipments_updated_at 
+FROM shipments) AS anon_1
+2026-06-16 13:55:50,073 - sqlalchemy.engine.Engine - INFO - [generated in 0.00168s] ()
+2026-06-16 13:55:50,083 - sqlalchemy.engine.Engine - INFO - SELECT shipments.id AS shipments_id, shipments.order_id AS shipments_order_id, shipments.tracking_number AS shipments_tracking_number, shipments.status AS shipments_status, shipments.shipped_date AS shipments_shipped_date, shipments.delivered_date AS shipments_delivered_date, shipments.created_at AS shipments_created_at, shipments.updated_at AS shipments_updated_at, orders_1.id AS orders_1_id, orders_1.customer_id AS orders_1_customer_id, orders_1.total_amount AS orders_1_total_amount, orders_1.status AS orders_1_status, orders_1.order_date AS orders_1_order_date, orders_1.created_at AS orders_1_created_at, orders_1.updated_at AS orders_1_updated_at 
+FROM shipments LEFT OUTER JOIN orders AS orders_1 ON orders_1.id = shipments.order_id ORDER BY shipments.created_at DESC
+ LIMIT ? OFFSET ?
+2026-06-16 13:55:50,084 - sqlalchemy.engine.Engine - INFO - [generated in 0.00131s] (100, 0)
+2026-06-16 13:55:50,094 - sqlalchemy.engine.Engine - INFO - ROLLBACK
